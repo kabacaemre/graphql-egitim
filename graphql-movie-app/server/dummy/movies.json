@@ -1,0 +1,38 @@
+[
+    {
+        "_id" : "5ef7da18070e4354c0d871f0",
+        "title" : "The Godfather",
+        "description" : "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+        "year": 1972,
+        "directorId" : "5ef7d894070e4354c0d871f0"
+    },
+    {
+        "_id" : "5ef7e4bc070e4354c0d871f1",
+        "title" : "Scarface",
+        "description" : "In Miami in 1980, a determined Cuban immigrant takes over a drug cartel and succumbs to greed takes over a drug of.",
+        "year": 1980,
+        "directorId" : "5ef7d939070e4354c0d871f2"
+    },
+    {
+        "_id" : "5ef7e4fc070e4354c0d871f2",
+        "title" : "Pulp Fiction",
+        "description" : "The lives of two mob hitmen, a boxer, a gangsters wife, and a pair of diner bandits intertwine in four tales redemption.",
+        "year": 1994,
+        "directorId" : "5ef7d928070e4354c0d871f1"
+    },
+    {
+        "_id" : "5ef7e6de070e4354c0d871f3",
+        "title" : "Apocalypse Now",
+        "description" : "During the Vietnam War, Captain Willard is sent on a dangerous mission into Cambodia to assassinateh among a local tribe.",
+        "year": 1979,
+        "directorId" : "5ef7d894070e4354c0d871f0"
+    },
+    {
+        "_id" : "5ef7e75d070e4354c0d871f4",
+        "title" : "Reservoir Dogs",
+        "description" : "After a simple jewelry heist goes terribly wrong, the surviving criminals begin to suspect that one off police informant.",
+        "year": 1979,
+        "directorId" : "5ef7d939070e4354c0d871f2"
+    }
+]
+

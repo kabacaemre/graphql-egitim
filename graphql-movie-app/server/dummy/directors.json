@@ -1,0 +1,18 @@
+[
+    {
+        "_id" : "5ef7d894070e4354c0d871f0",
+        "name" : "Francis Ford Coppola",
+        "birth" : 1939
+    },
+    {
+        "_id": "5ef7d928070e4354c0d871f1",
+        "name" : "Brian De Palma",
+        "birth" : 1940
+    },
+    {
+        "_id" : "5ef7d939070e4354c0d871f2",
+        "name" : "Quentin Tarantino",
+        "birth" : 1963
+    }
+]
+
