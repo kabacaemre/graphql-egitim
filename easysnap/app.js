@@ -1,6 +1,5 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const { loadFile } = require('graphql-import-files');
 
 //Express
 const app = express();
@@ -10,15 +9,18 @@ const dotenv = require('dotenv');
 dotenv.config({path: "./config/env/config.env"});
 
 // MongoDB Connection
-const connectDatabase = require('./helpers/db.js');
-connectDatabase();
+// const connectDatabase = require('./helpers/db.js');
+// connectDatabase();
+
+//Types
+const typeDefs  = require('./graphql/schema');
 
 //Resolvers
 const resolvers = require('./graphql/resolvers');
 
 //ApolloServer
 const server = new ApolloServer({
-	typeDefs: loadFile('./graphql/types/schema.graphql'),
+	typeDefs,
 	resolvers
 });
 server.applyMiddleware({ app });
