@@ -12,6 +12,9 @@ dotenv.config({path: "./config/env/config.env"});
 const connectDatabase = require('./helpers/db.js');
 connectDatabase();
 
+// models
+const User = require('./models/User');
+
 //Types
 const typeDefs  = require('./graphql/schema');
 
@@ -21,7 +24,10 @@ const resolvers = require('./graphql/resolvers');
 //ApolloServer
 const server = new ApolloServer({
 	typeDefs,
-	resolvers
+	resolvers,
+	context: {
+		User
+	}
 });
 server.applyMiddleware({ app });
 
