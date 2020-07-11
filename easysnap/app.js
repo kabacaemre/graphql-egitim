@@ -9,8 +9,8 @@ const dotenv = require('dotenv');
 dotenv.config({path: "./config/env/config.env"});
 
 // MongoDB Connection
-// const connectDatabase = require('./helpers/db.js');
-// connectDatabase();
+const connectDatabase = require('./helpers/db.js');
+connectDatabase();
 
 //Types
 const typeDefs  = require('./graphql/schema');
