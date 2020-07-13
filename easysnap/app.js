@@ -14,6 +14,7 @@ connectDatabase();
 
 // models
 const User = require('./models/User');
+const Snap = require('./models/Snap');
 
 //Types
 const typeDefs  = require('./graphql/schema');
@@ -26,7 +27,8 @@ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context: {
-		User
+		User,
+		Snap
 	}
 });
 server.applyMiddleware({ app });
