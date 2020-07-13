@@ -1,8 +1,10 @@
 type Query {
-    snap(id: ID!): Snap!
+    snap(id: ID!): Snap!,
+    snaps: [Snap!]!
 }
 
 type Snap {
+    id: ID!
     text: String!
     createdAt: String!
 }
