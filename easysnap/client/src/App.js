@@ -31,7 +31,7 @@ const Root = () => (
 function App() {
     return (
         <div className="App">
-            <div class="container">
+            <div className="container">
                 <Root />
             </div>
         </div>

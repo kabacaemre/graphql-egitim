@@ -3,7 +3,7 @@ import React from 'react';
 function Login() {
     return (
         <div>
-            <form class="user-form">
+            <form className="user-form">
                 <label>
                     <input type="text" placeholder="username" />
                 </label>
