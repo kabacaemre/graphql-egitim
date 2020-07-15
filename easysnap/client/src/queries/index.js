@@ -9,3 +9,13 @@ export const newUserMutation = gql`
 		}
 	}
 `;
+
+// singin mutations
+
+export const signInMutation = gql`
+	mutation($username: String!, $password: String!) {
+		signIn(data: { username: $username, password: $password }) {
+			token
+		}
+	}
+`;
