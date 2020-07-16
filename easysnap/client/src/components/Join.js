@@ -27,9 +27,10 @@ function Join() {
                 username: data.username,
                 password: data.password
             }
-        }).then(data => {
+        }).then(({data}) => {
             setformSuccess(true);
             console.log(data);
+            localStorage.setItem('token', data.createUser.token);
             e.target.reset();
         }).catch(e => {
             setformSuccess(false);

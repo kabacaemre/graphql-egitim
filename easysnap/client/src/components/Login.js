@@ -24,9 +24,10 @@ function Login() {
                 username: data.username,
                 password: data.password
             }
-        }).then(data => {
+        }).then(({data}) => {
             setformSuccess(true);
             console.log(data);
+            localStorage.setItem('token', data.signIn.token);
             e.target.reset();
         }).catch(e => {
             setformSuccess(false);
