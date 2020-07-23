@@ -19,3 +19,18 @@ export const signInMutation = gql`
 		}
 	}
 `;
+
+// activeUser query
+
+export const getActiveUser = gql`
+	query{
+		activeUser{
+			username
+			createdAt
+			snaps{
+				text
+				createdAt
+			}
+		}
+	}
+`; 

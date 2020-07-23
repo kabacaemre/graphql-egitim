@@ -1,6 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
+//React Router
+import { useHistory } from "react-router-dom";
+
 import { useMutation } from '@apollo/react-hooks';
 
 //queries
@@ -9,7 +12,9 @@ import { newUserMutation } from '../queries';
 //Alert
 import Error from './Error';
 
-function Join() {
+function Join(props) {
+    let history = useHistory();
+
     const [ formSuccess, setformSuccess ] = useState(false);
     const { register, handleSubmit, errors, watch, formState } = useForm({ mode: "onChange" });
 
@@ -27,11 +32,13 @@ function Join() {
                 username: data.username,
                 password: data.password
             }
-        }).then(({data}) => {
+        }).then(async ({data}) => {
             setformSuccess(true);
             console.log(data);
             localStorage.setItem('token', data.createUser.token);
+            await props.refetch();
             e.target.reset();
+            history.push('/');
         }).catch(e => {
             setformSuccess(false);
             console.log("Error", e);
