@@ -25,6 +25,7 @@ export const signInMutation = gql`
 export const getActiveUser = gql`
 	query{
 		activeUser{
+			id
 			username
 			createdAt
 			snaps{
@@ -47,6 +48,19 @@ export const getSnaps = gql`
 				id
 				username
 			}
+		}
+	}
+`;
+
+// add snap mutation
+
+export const addSnapMutation = gql`
+	mutation($user_id: ID!, $text: String!) {
+		createSnap ( data: {
+			user_id: $user_id
+			text: $text
+		}) {
+			id
 		}
 	}
 `;

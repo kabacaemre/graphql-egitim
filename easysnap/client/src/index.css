@@ -248,3 +248,9 @@ li:nth-child(5) {
     transform: scale(0.7);
   }
 }
+
+.requiredText {
+  display: block;
+  margin-top: 7px;
+  color: #ce3745;
+}
