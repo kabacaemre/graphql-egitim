@@ -1,6 +1,17 @@
 import React from 'react';
 
+//TimeAgo
+import TimeAgo from 'react-timeago'
+
+import { useQuery } from '@apollo/react-hooks';
+
+//queries
+import { getSnaps } from '../queries';
+
 function Home() {
+    const { loading, error, data } = useQuery(getSnaps);
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
     return (
         <div>
             <div className="description">
@@ -14,27 +25,20 @@ function Home() {
             </div>
             <div>
                 <ul className="snaps">
-                    <li>
-                        <div className="title">Lorem ipsum dolor sit amet</div>
-                        <div className="date">
-                            <span>now</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="title">Curabitur gravida arcu ac tortor dignissim.</div>
-                        <div className="date">
-                            <span>5 minutes ago</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="title">Tristique risus nec feugiat in fermentum.</div>
-                        <div className="date">
-                            <span>7 minutes ago</span>
-                        </div>
-                    </li>
+                    {data.snaps.map(snap => (
+                        <li key={snap.id}>
+                            <div className="title">
+                                <span className="username">@{ snap.user.username } </span>
+                                {snap.text}
+                            </div>
+                            <div className="date">
+                                <span><TimeAgo date={ snap.createdAt } /></span>
+                            </div>
+                        </li>
+                    ))}
                 </ul>
             </div>
-            <div className="counter">3 snap(s)</div>
+            <div className="counter">{data.snaps.length} snap(s)</div>
         </div>
     );
 }
