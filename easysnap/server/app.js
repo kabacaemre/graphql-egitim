@@ -1,5 +1,6 @@
+const http = require("http");
 const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer, PubSub } = require('apollo-server-express');
 const jwt = require("jsonwebtoken");
 
 //Express
@@ -23,6 +24,9 @@ const typeDefs  = require('./graphql/schema');
 //Resolvers
 const resolvers = require('./graphql/resolvers');
 
+//PubSub
+const pubsub = new PubSub();
+
 //ApolloServer
 const server = new ApolloServer({
 	typeDefs,
@@ -30,7 +34,8 @@ const server = new ApolloServer({
     context: ({ req }) => ({
 		User,
 		Snap,
-		activeUser: req.activeUser 
+		pubsub,
+		activeUser: req ? req.activeUser : null
 	})
 });
 
@@ -57,6 +62,9 @@ server.applyMiddleware({
 	cors: { origin: true, credentials: true }
 });
 
-app.listen({ port: 4001 }, () =>
+const httpServer = http.createServer(app);
+server.installSubscriptionHandlers(httpServer);
+
+httpServer.listen({ port: 4001 }, () =>
   console.log(`Server ready at http://localhost:4001${server.graphqlPath}`)
 )

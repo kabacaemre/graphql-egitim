@@ -19,4 +19,8 @@ type Mutation {
 input CreateSnapInput {
     user_id: ID!
     text: String!
-} 
+}
+
+type Subscription {
+    sayi: Int
+}
