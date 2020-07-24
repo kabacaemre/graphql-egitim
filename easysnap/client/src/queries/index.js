@@ -61,6 +61,12 @@ export const addSnapMutation = gql`
 			text: $text
 		}) {
 			id
+			text
+			createdAt
+			user{
+				id
+				username
+			}
 		}
 	}
 `;

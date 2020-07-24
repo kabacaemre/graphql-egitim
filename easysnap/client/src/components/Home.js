@@ -33,7 +33,31 @@ function Home({ session }) {
                 user_id: userId,
                 text: data.snaptext
             },
-            refetchQueries: [{ query: getSnaps }]
+            optimisticResponse: {
+                __typename: "Mutation",
+                createSnap: {
+                  __typename: "Snap",
+                  id: Math.round(Math.random() * -200000),
+                  text: data.snaptext,
+                  createdAt: new Date(),
+                  user: {
+                    __typename: "User",
+                    ...session.activeUser
+                  }
+                }
+            },
+            update: (cache, { data: { createSnap } }) => {
+                const { snaps } = cache.readQuery({
+                    query: getSnaps
+                });
+    
+                cache.writeQuery({
+                    query: getSnaps,
+                    data: {
+                        snaps: [createSnap, ...snaps]
+                    }
+                })
+            }
         });
         e.target.reset();
     }
@@ -66,13 +90,15 @@ function Home({ session }) {
             <div>
                 <ul className="snaps">
                     {data.snaps.map(snap => (
-                        <li key={snap.id}>
+                        <li key={snap.id} className={snap.id < 0 ? 'optimistic' : ''}>
                             <div className="title">
                                 <span className="username">@{ snap.user.username } </span>
                                 {snap.text}
                             </div>
                             <div className="date">
-                                <span><TimeAgo date={ snap.createdAt } /></span>
+                                <span>
+                                    {snap.id < 0 ? 'Sending' : <TimeAgo date={ snap.createdAt } />}
+                                </span>
                             </div>
                         </li>
                     ))}
