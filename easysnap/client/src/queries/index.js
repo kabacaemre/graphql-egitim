@@ -70,3 +70,30 @@ export const addSnapMutation = gql`
 		}
 	}
 `;
+
+// user created subscription
+
+export const userCreated = gql`
+	subscription{
+		user{
+			id
+			username
+		}
+	}
+`;
+
+// snap created subscription
+
+export const snapCreated = gql`
+	subscription($userId: ID){
+		snap(userId: $userId){
+			id
+			text
+			createdAt
+			user{
+				id
+				username
+			}
+		}
+	}
+`;
