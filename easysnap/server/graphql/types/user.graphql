@@ -1,12 +1,16 @@
+scalar Date
+
 type Query {
     user(id: ID!): User!,
     users: [User!]!
+
+    activeUser: User
 }
 
 type User {
     id: ID!
     username: String!
-    createdAt: String
+    createdAt: Date
     snaps: [Snap!]!
 }
 
@@ -23,4 +27,8 @@ input CreateUserInput {
 input signinUserInput {
     username: String!
     password: String!
+}
+
+type Subscription {
+    user: User!
 }
